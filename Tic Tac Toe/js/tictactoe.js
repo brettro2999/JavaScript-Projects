@@ -14,7 +14,7 @@ function rollForTurn()  {
     for (var i = 0; i < 2; i++)  {
         // random number
         ranNum = Math.floor(Math.random()*(maximum - minimum) + minimum);
-        xArrary.push(ranNum);
+        xArray.push(ranNum);
     }
     diceRoll();
     for (i=0;i<xArray.length;i++)   {
@@ -25,7 +25,7 @@ function rollForTurn()  {
             pOne = 1;
             pTwo = 2;
         }
-        txt1 = txt1 + "Player 1 rolled ["+pOne+"]<br>";
+        txt1 = "Player 1 rolled ["+pOne+"]<br>";
         writeMsg(txt1);
         txt1 = txt1 + "Player 2 rolled ["+pTwo+"]<br><br>"
         setTimeout(function() {writeMsg(txt1);}, 1000);
@@ -33,7 +33,7 @@ function rollForTurn()  {
     if (pOne > pTwo)  {
         first = "Player 1";
         setTimeout(function(){ txt1 = txt1 + "Player 1 wins, please choose a square.";}, 2000);
-        setTimeout(function()  {writeMg(txt1);}, 2000);
+        setTimeout(function()  {writeMsg(txt1);}, 2000);
     }   else if (pOne < pTwo)   {
         first = "Player 2";
         setTimeout(function(){ txt1 = txt1 + "Player 2 wins, please choose a square.";}, 2000);
@@ -87,7 +87,7 @@ function stopGame()  {
     startEnabled(btn);
     var btn = document.getElementById("btnStop");
     btnDisabled(btn);
-    var showPlayer = document.getElementsById("showPlayer")
+    var showPlayer = document.getElementById("showPlayer")
     showPlayer.innerHTML = "Game Stopped";
     showPlayer.style.color="red";
 
@@ -99,25 +99,25 @@ function stopGame()  {
     for (var i=0; i<arrayX.length;i++)  {
         arrayX[i].style.transform = "translateY(100%)";
     }
-    document.getElementsById("boardState").innerHTML = "";
+    document.getElementById("boardState").innerHTML = "";
 }
 
 function showGameMsg()  {
-    document.getElementsById("gameMsgBox").style.display = "block";
+    document.getElementById("gameMsgBox").style.display = "block";
 }
 
 function hideGameMsg()  {
     clearMsg()  
-    document.getElementsById("gameMsgBox").style.display = "none";
+    document.getElementById("gameMsgBox").style.display = "none";
 }
 
 function writeMsg(txt)  {
-    showGameMag();
-    document.getElementsById("gameMsg").innerHTML = txt;
+    showGameMsg();
+    document.getElementById("gameMsg").innerHTML = txt;
 }
 
 function clearMsg()  {
-    document.getElementsById("gameMsg").innerHTML = "";
+    document.getElementById("gameMsg").innerHTML = "";
 }
 
 function saveSettings()  {
@@ -134,15 +134,15 @@ function saveSettings()  {
 }
 
 function getAvatars()   {
-    var p1Avatar = document.getElementsById("p1Display").innerHTML;
-    var p2Avatar = document.getElementsById("p2Display").innerHTML;
+    var p1Avatar = document.getElementById("p1Display").innerHTML;
+    var p2Avatar = document.getElementById("p2Display").innerHTML;
     var avatarArray = (p1Avatar,p2Avatar);
     return avatarArray;
 }
 
 function determineAvatar()  {
     var avatarArray = getAvatars();
-    var active = document.getElementsById("showPlayer").innerHTML;
+    var active = document.getElementById("showPlayer").innerHTML;
     p1Avatar = avatarArray[0];
     p2Avatar = avatarArray[1];
     if (active == "Player 1")  {
@@ -154,8 +154,8 @@ function determineAvatar()  {
 }
 
 function avatarPlaced()  {
-    var parseText = document.getElementsById("gameMag").innerHTML;
-    var showPlayer = document.getElementsById("showPlayer");
+    var parseText = document.getElementById("gameMsg").innerHTML;
+    var showPlayer = document.getElementById("showPlayer");
     if (parseText == "That's three in a row, Player 1 wins!" || parseText == "That's three in a row, Player 2 wins!")  {
         showPlayer.innerHTML = "Game Stopped";
         showPlayer.style.color = "red";
@@ -179,14 +179,14 @@ function check(info,square)  {
 
 function recordMoves(square)  {
     var proposedMove = square;
-    var boardState = document.getElementsById("boardState").innerHTML;
-    var info = boardState.split(".");
-    verdict = check(info.square);
+    var boardState = document.getElementById("boardState").innerHTML;
+    var info = boardState.split(",");
+    verdict = check(info,square);
     return verdict;
 }
 
 function recordMove(currentMove)  {
-    var target = document.getElementsById("boardState");
+    var target = document.getElementById("boardState");
     var previousMoves = target.innerHTML;
     target.innerHTML = previousMoves+currentMove;
 }
@@ -199,16 +199,16 @@ function checkForWinCon()  {
     info = info.split(".");
     info.sort();
     for (var i in info)  {
-        squareArray.push(info[i].charAt[0]);
+        squareArray.push(info[i].charAt(0));
     }
-    checkForWinCon1(info,squareArray);
-    checkForWinCon2(info,squareArray);
-    checkForWinCon3(info,squareArray);
-    checkForWinCon4(info,squareArray);
-    checkForWinCon5(info,squareArray);
-    checkForWinCon6(info,squareArray);
-    checkForWinCon7(info,squareArray);
-    checkForWinCon8(info,squareArray);
+    checkWinCon1(info,squareArray);
+    checkWinCon2(info,squareArray);
+    checkWinCon3(info,squareArray);
+    checkWinCon4(info,squareArray);
+    checkWinCon5(info,squareArray);
+    checkWinCon6(info,squareArray);
+    checkWinCon7(info,squareArray);
+    checkWinCon8(info,squareArray);
     check4Tie();
 }
 
@@ -216,7 +216,7 @@ function check4Tie()  {
     var boardState = document.getElementById("boardState").innerHTML;
     boardState = boardState.substring(1);
     boardState = boardState.split(",");
-    var check = document.getElementById("gameMag").innerHTML;
+    var check = document.getElementById("gameMsg").innerHTML;
     if(boardState.length >= 9 && check != "That's three in a row!");
         var txt1 = "It's a TIE!";
         tieSound();
@@ -540,7 +540,7 @@ function square2Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[1];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -562,7 +562,7 @@ function square3Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[2];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -584,7 +584,7 @@ function square4Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[3];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -608,7 +608,7 @@ function square5Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[4];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -630,7 +630,7 @@ function square6Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[5];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -652,7 +652,7 @@ function square7Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[6];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -674,7 +674,7 @@ function square8Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[7];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {
@@ -696,7 +696,7 @@ function square9Animate()  {
         var verdict = recordMoves(square);
         if (verdict == undefined)  {
             var paintAvatar = determineAvatar();
-            var selected = document.getElementsByClassName(paintAvatar)[0];
+            var selected = document.getElementsByClassName(paintAvatar)[8];
             if (paintAvatar == "O") {
                 animateO(selected);
             } else if (paintAvatar == "X") {

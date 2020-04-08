@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hawaii Vacations | Travel</title>
+		<link rel="stylesheet" href="./css/one_page_website.css"> 
+	</head>
+	<body>
+		<h1><b>The BEST Choice for Your Island Getaway!</b></h1>
+		<p>Whether it be for a family vacation or a romatic getaway, Hawai'i Vacations are your best bet for affordability and satisfaction!</p>
+	<div>
+		<div>
+			<ul>
+				<a href="#photos"><li>Photos</li></a>
+				<a href="#videos"><li>Videos</li></a>
+				<a href="#contact"><li>Contact</li></a>
+			</ul>
+		</div>
+	</div>
+	<br><br>
+	<section id="photos"> 
+		<h2>Photos</h2>
+		<div class="row">
+			<div class="column">
+			  <img src="./thumbs/hThumb1.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+			</div>
+			<br>
+			<div class="column">
+			  <img src="./thumbs/hThumb2.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+			</div>
+			<br>
+			<div class="column">
+			  <img src="./thumbs/hThumb3.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+			</div>
+			<br>
+		  </div>
+		  
+		  <div id="myModal" class="modal">
+			<span class="close cursor" onclick="closeModal()">&times;</span>
+			<div class="modal-content">
+		  
+			  <div class="mySlides">
+				<div class="numbertext">1 / 3</div>
+				<img src="./thumbs/hThumb1.jpg" style="width:100%">
+			  </div>
+		  
+			  <div class="mySlides">
+				<div class="numbertext">2 / 3</div>
+				<img src="./thumbs/hThumb2.jpg" style="width:100%">
+			  </div>
+		  
+			  <div class="mySlides">
+				<div class="numbertext">3 / 3</div>
+				<img src="./thumbs/hThumb3.jpg" style="width:100%">
+			  </div>
+			  
+			  
+			  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+		  
+			  <div class="caption-container">
+				<p id="caption"></p>
+			  </div>
+		  
+		  
+			  <div class="column">
+				<img class="demo cursor" src="./thumbs/hThumb1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Waikiki">
+			  </div>
+			  <div class="column">
+				<img class="demo cursor" src="./thumbs/hThumb2.jpg" style="width:100%" onclick="currentSlide(2)" alt="Sandy Beach">
+			  </div>
+			  <div class="column">
+				<img class="demo cursor" src="./thumbs/hThumb3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Palm Trees">
+			  </div>
+			</div>
+		  </div>
+		  <br><br>
+	</section>
+	
+	<section id="videos">
+		<div><h2><b>Videos</b></h2>
+		<div>
+				<p>The Island Paradise you can visit:<p>
+				<iframe width="500" height="300" src="https://www.youtube.com/embed/w2H07DRv2_M?start=9" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
+	</section>
+	
+	<section id="contact">
+		<div><h2>Contact Us!</h2>
+			<div>
+				<form action="">
+					<label for="name">Full Name:</label>
+					<input type="text" id="name"><br>
+					<label for="email">Email Address:</label>
+					<input type="text" id="email"><br>
+					<label for="phone">Phone Number:</label>
+					<input type="text" id="phone"><br>
+					<input type="submit" value="Submit">
+					
+				
+				</form>
+			</div>
+		</div>
+	</section>
+	
+	<div>
+		<div>
+			<div>
+				<br><br>www.hawaii-islandsvacations.com &nbsp;|&nbsp; &copy; 2020
+			</div>
+		</div>
+	</div>
+	
+	<script src="JS/one_page_website.js"></script>
+	</body>
+	
+</html>
+		
+	
+	

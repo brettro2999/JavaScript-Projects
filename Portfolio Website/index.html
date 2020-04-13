@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+
+    <!-- head -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Brett Romero | Portfolio</title>
+        <link rel="stylesheet" href="./css/style_portfolio.css">
+        <script src="js/scriptPortfolio.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    </head>
+
+    <!-- body -->
+    <body class="Background">
+
+        <script> 
+            document.body.className += ' fade-out';
+              $(function() {
+                $('body').removeClass('fade-out');
+              }
+            );
+          
+          </script>
+             
+    <!-- navbar -->
+        <div class="navbar">
+            <a class="active" href="#Home">Home</a>
+            <a href="#About">About</a>
+            <a href="#Github">Github</a>
+            <a onclick="openForm()">Contact</a>
+        </div>
+
+    <!-- home -->
+        <br> 
+        <br>
+        
+    <!-- video -->
+        <div id="Home">
+            <video autoplay muted loop height=740 id="digital_world">
+                <source src="digital_world.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+
+    <!-- video text -->
+        <div class="video_text">
+            <h1 style="color:antiquewhite;">Brett Romero Software Development</h1>
+                <p>
+                    <strong>
+                        <br>
+                        My name is Brett Romero.<br> This portfolio website is where I share my experience as a full-stack software developer.<br>
+                        <br>Thank you for stopping by and enjoy!
+                    </strong>
+                </p>
+        </div>
+
+    <!-- slideshow -->
+        <div id="Slideshow">
+            <div id="Slideshow_Background"> 
+            <div id="Slideshow_Container">
+                
+                <div class="mySlides fade">
+                <div class="Slide_Number">1 / 4</div>
+                    <img class="Slide_Show_Images" src="images/webSlide.png" style="width:90%">
+                    <div class="text">I am trained in<br>HTML, CSS, JavaScript,</div>
+                </div>
+
+                <div class="mySlides fade">
+                <div class="Slide_Number">2 / 4</div>
+                    <img class="Slide_Show_Images" src="images/pySlide.png" style="width:90%">
+                    <div class="text"> in Python,</div>
+                </div>
+
+                <div class="mySlides fade">
+                <div class="Slide_Number">3 / 4</div>
+                    <img class="Slide_Show_Images" src="images/sqlSlide.png" style="width:90%">
+                    <div class="text">and back end development, databases and SQL.</div>
+                    </div>
+
+                <div class="mySlides fade">
+                <div class="Slide_Number">4 / 4</div>
+                    <img class="Slide_Show_Images" src="images/brettSlide.jpg" style="width:90%">
+                    <div class="text"> 
+                        <a onclick="openForm()" href="#Contact" style="color:white;">Contact me now!</a>
+                    </div>
+                </div>
+            
+                <a class="Previous" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="Next" onclick="plusSlides(1)">&#10095;</a>
+                
+            </div>
+        <br>
+
+            <div style="text-align:center">
+        
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span> 
+                
+
+            </div>
+            </div>
+        </div>
+
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+            function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {slideIndex = 1}    
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            }
+        </script>
+
+
+    <!-- about -->
+        <div class="Row" id="About">
+            <div class="Column_2">
+                <img src="./images/dev1.jpg" alt="Computer">
+            </div>
+
+            <div class="Column_1">
+                <h1>About</h1>
+                    <p>I am a software developer currently studying in the <a href="https://www.learncodinganywhere.com">The Tech Academy</a>'s Python Developer Bootcamp. <br><br> I am gaining experience in HTML, Javascript, SQL, Python, and others. I have a passion for programming and would love to work on your project. <a href="#Contact">Contact</a> me!</p>
+            </div>
+        </div>
+
+    <!-- Github -->
+        <div class="Row" id="Github">
+            <div class ="Column_1">
+                <h1>Github</h1>
+                    <p>You can view my coding projects on my GitHub profile here:<br>
+                    <a href="https://github.com/BrettRo29">Brett Romero GitHub</a></p>
+            </div>
+
+            <div class="Column_2">
+                <a href="https://github.com/BrettRo29"><img src="./images/git.png" alt="GitHub"></a>
+            </div>
+        </div>
+
+
+    <!-- Contact -->
+        <div id="Contact"> 
+            <button onclick="openForm()" class="PopUp_btn"> CONTACT ME</button>
+            <div class="form-popup" id="myForm">
+                <form method="POST" class="form-container">
+                <h1>Contact</h1>
+                    <label for="name"><b>Name:</b></label>
+                    <input type="text" placeholder="" name="name" required>
+                    <label for="phone"><b>Phone:</b></label>
+                    <input type="text" placeholder="" name="phone">
+                    <label for="email"><b>Email:</b></label>		
+                    <input type="text" placeholder="" name="email" required>
+                    <label for="message"><b>Message:</b></label>
+                    <input type="text" placeholder="Any additional information about your inquiry here..." name="message">
+        
+            <button type="submit" class="btn">SUBMIT</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">CLOSE</button>
+                </form>
+            </div>
+        </div>
+
+    <!-- footer -->
+        <footer>
+            <p>
+                brettromero-dev.com
+            </p>
+        </footer>     
+    </body>
+</html>
